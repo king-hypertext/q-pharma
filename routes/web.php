@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layout.layout');
 });
+Route::get('/drugs', function () {
+    return [
+        'paracetamol', 'citro c', 'amoxacilin'
+    ];
+});

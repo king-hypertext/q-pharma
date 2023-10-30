@@ -8,14 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="favicon.png" />
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.min.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-
-    <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ url('assets/jQuery.js') }}"></script>
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
 
@@ -34,109 +35,105 @@
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                 </div>
-
-                <div class="menu-inner-shadow"></div>
-
                 <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
+                        <a href="#" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">invoices</span>
+                        <span class="menu-header-text">Invoices</span>
                     </li>
                     <li class="menu-item">
-                        <a href="/h" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Add Invoice</div>
+                        <a href="#new-invoice" data-bs-toggle="modal" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">New Invoice</div>
                         </a>
-                        <a href="#" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Manage Invoice</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">drugs</span>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Add Drugs</div>
-                        </a>
-                        <a href="#" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Manage Drugs</div>
+                        <a href="#" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Manage Invoices</div>
                         </a>
                     </li>
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">suppliers</span>
+                        <span class="menu-header-text">Medicines / Drugs</span>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link ">
+                        <a href="#add-drugs" class="menu-link" data-bs-toggle="modal">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Add Supplier</div>
+                            <div data-i18n="Without menu">Add Drugs</div>
                         </a>
-                        <a href="#" class="menu-link ">
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-without-navbar.html" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Manage Suppliers</div>
+                            <div data-i18n="Without navbar">Manage Drugs</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-layout"></i>
+                            <div data-i18n="Container">Manage Stock</div>
                         </a>
                     </li>
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">invoices</span>
+                        <span class="menu-header-text">Suppliers(3)</span>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Add Invoice</div>
+                        <a href="#add-supplier" data-bs-toggle="modal" class="menu-link">
+                            <div data-i18n="Account">Add Supplier</div>
                         </a>
-                        <a href="#" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Manage Invoice</div>
+                    </li>
+                    <li class="menu-item">
+                        <a href="pages-account-settings-notifications.html" class="menu-link">
+                            <div data-i18n="Notifications">Manage Suppliers</div>
                         </a>
                     </li>
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Sales</span>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Sales</div>
+                        <a href="#" class="menu-link">
+                            <div data-i18n="Container">Manage Sales</div>
                         </a>
-
+                    </li>
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Bulk Purchases</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-layout"></i>
+                            <div data-i18n="Layouts">Purchases</div>
+                        </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="layouts-without-menu.html" class="menu-link">
-                                    <div data-i18n="Without menu">Today Sales</div>
+                                <a href="#" class="menu-link">
+                                    <div data-i18n="Without menu">Add Bulk Purchase</div>
                                 </a>
                             </li>
                             <li class="menu-item">
                                 <a href="layouts-without-navbar.html" class="menu-link">
-                                    <div data-i18n="Without navbar">View All Sales</div>
+                                    <div data-i18n="Without navbar">Manage Purchases</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Reports</div>
+                        <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                            target="_blank" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-support"></i>
+                            <div data-i18n="Support">Support</div>
                         </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="layouts-without-menu.html" class="menu-link">
-                                    <div data-i18n="Without menu">Reports</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="layouts-without-navbar.html" class="menu-link">
-                                    <div data-i18n="Without navbar">Manage Reports</div>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                            target="_blank" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-gears"></i>
+                            <div>Settings</div>
+                        </a>
                     </li>
                 </ul>
             </aside>
@@ -151,25 +148,33 @@
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none"
-                                    placeholder="Search..." aria-label="Search..." />
+                        <form action="#" method="get">
+                            <div class="navbar-nav align-items-center">
+                                <div class="nav-item d-flex align-items-center">
+                                    <i class="bx bx-search fs-4 lh-0"></i>
+                                    <input type="text" id="search-drug" class="form-control border-0 shadow-none"
+                                        placeholder="Search..." aria-label="Search..." />
+                                    <button class="btn btn-outline-primary px-1 ms-1" title="Search drug"
+                                        type="submit">
+                                        <i class="bx bx-search fs-4 lh-0"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /Search -->
+                            <style>
+                                .ui-autocomplete {
+                                    overflow-y: auto;
+                                    overflow-x: hidden;
+                                }
+
+                                * html .ui-autocomplete {
+                                    height: 120px !important;
+                                    min-height: 200px;
+                                    min-width: 200px;
+                                }
+                            </style>
+                        </form>
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a class="github-button"
-                                    href="https://github.com/themeselection/sneat-html-admin-template-free"
-                                    data-icon="octicon-star" data-size="large" data-show-count="true"
-                                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
-                            </li>
-
-                            <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
@@ -239,22 +244,32 @@
                     @yield('content')
                 </div>
             </div>
-
+            <div class="menu-inner-shadow"></div>
         </div>
         <div class="content-backdrop fade"></div>
-    </div>
-    </div>
+        @include('layout.modals.new_invoice')
     </div>
     <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
     <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/js/config.js') }}"></script>
+    <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ url('assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ url('assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ url('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"></script>
+    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
     <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(
+            function() {
+                $("#search-drug").autocomplete({
+                    source: ['king', 'joe', 'mary', 'java', 'javascript', 'node', 'jnr', 'james', 'jemy'],
+                    minLength: 1,
+                });
+            }
+        )
+    </script>
+    @yield('js')
 </body>
 
 </html>
