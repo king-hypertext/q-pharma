@@ -6,7 +6,7 @@
                     <h5 class="h3 modal-title text-capitalize" id="modalScrollableTitle">new invoice</h5>
                 </div>
             </div>
-            <form id="form-invoice" action="/test" method="post">
+            <form id="form-invoice" action="{{ route('invoice.add') }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="d-flex flex-row">
@@ -63,7 +63,7 @@
                                             <input type="text" name="medicine[]" id="medicine" class="form-control"
                                                 onfocus="this.type='search'" />
                                             <script type="text/javascript">
-                                                var drug_list = {};
+                                                var drug_list = [];
                                                 $.ajax({
                                                     method: "GET",
                                                     url: "/drugs",
@@ -85,7 +85,7 @@
                                     <td class="col-md-3">
                                         <div class="form-group">
                                             <input readonly type="text" name="price[]" type="text"
-                                                onfocus="this.type='number'" id="price" class="form-control"
+                                                onfocus="this.type='number'" value="0" id="price" class="form-control"
                                                 value="0" />
                                         </div>
                                     </td>

@@ -50,7 +50,7 @@ $(document).ready(function () {
             </td>
             <td class="col-md-3">
                 <div class="form-group">
-                    <input readonly type="text" name="price[]" id="price_${row}" onfocus="this.type='number'" class="form-control" value="0"/>
+                    <input readonly type="text" name="price[]" value="0" id="price_${row}" onfocus="this.type='number'" class="form-control" value="0"/>
                 </div>
             </td>
             <td class="col-md-2">
@@ -206,7 +206,7 @@ $(document).ready(function () {
         $(currentRow).remove();
         row--;
     })
-
+    const sumNumbers = arr => arr.reduce((totalNumbers, Num) => Number.parseFloat(totalNumbers) + Number.parseFloat(Num), 0)
     $(function () {
         drug_input_1 = $('tr.form_row > td > div > input')[0];
         input_row_price_1 = $('tr.form_row > td > div > input')[1];
@@ -226,8 +226,6 @@ $(document).ready(function () {
                 }
             })
         }
-        const sumNumbers = arr => arr.reduce((totalNumbers, Num) => Number.parseFloat(totalNumbers) + Number.parseFloat(Num), 0)
-
         $(document).on('keyup', '.qty', function () {
             var $array = [];
             $array.push($('input.total')[0].value);

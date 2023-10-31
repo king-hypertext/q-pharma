@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
-    data-assets-path="../assets/" data-template="vertical-menu-template-free">
+    data-assets-path="{{ url('assets/') }}" data-template="vertical-menu-template-free">
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,7 @@
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/jQuery.js') }}"></script>
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
@@ -30,7 +31,6 @@
                         </span>
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">q pharma</span>
                     </a>
-
                     <a href="#" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
@@ -152,8 +152,9 @@
                             <div class="navbar-nav align-items-center">
                                 <div class="nav-item d-flex align-items-center">
                                     <i class="bx bx-search fs-4 lh-0"></i>
-                                    <input type="text" id="search-drug" class="form-control border-0 shadow-none"
-                                        placeholder="Search..." aria-label="Search..." />
+                                    <input type="text" name="q" id="search-drug"
+                                        class="form-control border-0 shadow-none" placeholder="Search..."
+                                        aria-label="Search..." />
                                     <button class="btn btn-outline-primary px-1 ms-1" title="Search drug"
                                         type="submit">
                                         <i class="bx bx-search fs-4 lh-0"></i>
@@ -247,10 +248,9 @@
             <div class="menu-inner-shadow"></div>
         </div>
         <div class="content-backdrop fade"></div>
+        <div class="layout-overlay layout-menu-toggle"></div>
         @include('layout.modals.new_invoice')
     </div>
-    <div class="layout-overlay layout-menu-toggle"></div>
-    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/js/config.js') }}"></script>
     <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ url('assets/vendor/libs/popper/popper.js') }}"></script>
