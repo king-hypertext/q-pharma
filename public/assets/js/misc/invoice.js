@@ -31,11 +31,10 @@ $(document).ready(function () {
         input_row_qty_7,
         input_row_total_7;
 
-    var $drug_lists = [];
+    var $drug_lists;
     $.ajax({
         method: "GET",
         url: "/drugs",
-        dataType: "json",
         success: function (res) {
             $drug_lists = res;
         }
@@ -44,7 +43,7 @@ $(document).ready(function () {
         var newInvoiceRow =
             `<tr class="" id="form_row_${row}">
             <td class="col-md-4">
-                <div class="form-group">
+                <div class="form-group ui-widget">
                     <input type="text" name="medicine[]" id="medicine_${row}" class="form-control medicine" onfocus="this.type='search'" />
                 </div>
             </td>

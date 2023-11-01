@@ -6,7 +6,7 @@
                     <h5 class="h3 modal-title text-capitalize" id="modalScrollableTitle">new invoice</h5>
                 </div>
             </div>
-            <form autocomplete="off" id="form-invoice" action="{{ route('invoice.add') }}" method="post">
+            <form {{-- autocomplete="off" --}} id="form-invoice" action="{{ route('invoice.add') }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="d-flex flex-row">
@@ -63,20 +63,21 @@
                                             <input type="text" name="medicine[]" id="medicine" class="form-control"
                                                 onfocus="this.type='search'" />
                                             <script type="text/javascript">
-                                                var drug_list = [];
+                                                var drug_list;
                                                 $(function() {
                                                     $.ajax({
                                                         method: "GET",
-                                                        url: "/drugs",
-                                                        dataType: "json",
+                                                        url: "{{ route('drugs.list') }}",
                                                         success: function(res) {
                                                             drug_list = res;
                                                         }
                                                     })
-                                                    $('input#medicine').autocomplete({
+                                                    $('#medicine').on('keyup', function(){
+                                                        console.log(drug_list);
+                                                    })
+                                                    $('#medicine').autocomplete({
                                                         source: drug_list,
-                                                        minLength: 1,
-                                                        delay: 0,
+                                                        minLength: 2,
                                                     })
                                                 });
                                             </script>

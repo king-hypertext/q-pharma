@@ -2,18 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use Illuminate\Http\Request;
 
 Route::controller(AppController::class)->group(function () {
-    Route::get("/drug-price","getAllDrugs")->name('price');
-    Route::post("/add-invoice","AddInvoice")->name("invoice.add");
-    Route::get("/print-invoice?{invoiceId}","PrintInvoice")->name("invoice.print");
+    Route::get("/drug-price", "getAllDrugs")->name('price');
+    Route::post("/add-invoice", "AddInvoice")->name("invoice.add");
+    Route::get("/print-invoice?{invoiceId}", "PrintInvoice")->name("invoice.print");
 });
 
 Route::get('/', function () {
     return view('layout.layout');
 });
-Route::get('/drugs', function () {
-    return response([
-        'paracetamol', 'citro c', 'amoxacilin'
-    ]);
-});
+Route::get('/drugs', function (Request $req) {
+    return $req ? [
+        "paracetamol", "citro c", "amoxacilin"
+    ] : "";
+})->name('drugs.list');

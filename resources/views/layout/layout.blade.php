@@ -9,16 +9,16 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
-    
-    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/sweetalert/sweetalert2.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url('assets/vendor/sweetalert/sweetalert2.min.css') }}" />
     <script src="{{ url('assets/vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ url('assets/jQuery.js') }}"></script>
+    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
 
@@ -254,9 +254,7 @@
     </div>
     <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/js/config.js') }}"></script>
-    {{-- <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script> --}}
-    <script src="{{ url('assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ url('assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ url('assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
     <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
@@ -276,4 +274,3 @@
 </body>
 
 </html>
-
