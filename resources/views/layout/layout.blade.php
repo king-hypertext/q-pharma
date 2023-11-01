@@ -16,7 +16,8 @@
     
     <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.min.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.min.css') }}" />
-    {{-- <link rel="stylesheet" href="{{ url('assets/vendor/libs/apex-charts/apex-charts.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ url('assets/vendor/sweetalert/sweetalert2.min.css') }}"/>
+    <script src="{{ url('assets/vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ url('assets/jQuery.js') }}"></script>
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
