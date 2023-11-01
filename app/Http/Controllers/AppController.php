@@ -10,7 +10,7 @@ class AppController extends Controller
 {
     public function getAllDrugs(Request $drugs)
     {
-        if ($drugs === 'paracetamol') {
+        if ($drugs->medicine === 'paracetamol') {
             return 2;
         } else {
             return 5;
@@ -18,16 +18,16 @@ class AppController extends Controller
     }
     public function AddInvoice(Request $drugs)
     {
-        $drugs->validate([
-            'customerName' => 'string|max:150',
-            'customerPhone' => 'required|numeric|max_digits:15',
-            'invoiceDate' => 'required',
-            'paymentType' => 'required|string',
-            'medicine' => 'required|string|exists:drugs',
-            'price' => 'required|numeric',
-            'quantity' => 'required|numeric',
-            'total' => 'required|numeric'
-        ]);
+        // $drugs->validate([
+        //     'customerName' => 'string|max:150',
+        //     'customerPhone' => 'required|numeric|max_digits:15',
+        //     'invoiceDate' => 'required',
+        //     'paymentType' => 'required|string',
+        //     'medicine' => 'required|string|exists:drugs',
+        //     'price' => 'required|numeric',
+        //     'quantity' => 'required|numeric',
+        //     'total' => 'required|numeric'
+        // ]);
         $medicine = $drugs->medicine;
         $price = $drugs->price;
         $quantity = $drugs->quantity;
@@ -45,6 +45,10 @@ class AppController extends Controller
             ];
             Invoice::create($invoice);
         }
-        return redirect()->back()->with('success','Invoice has been saved!');
+        return redirect()->back()->with('invoice', 'Invoice has been saved!');
+    }
+    public function PrintInvoice($invoiceId)
+    {
+        $query = Invoice::where('id', '=', $invoiceId)->get();
     }
 }

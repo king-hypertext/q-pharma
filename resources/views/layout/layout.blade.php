@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="favicon.png" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.min.css') }}" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.min.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
+    
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ url('assets/vendor/libs/apex-charts/apex-charts.css') }}" /> --}}
     <script src="{{ url('assets/jQuery.js') }}"></script>
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
@@ -152,7 +152,7 @@
                             <div class="navbar-nav align-items-center">
                                 <div class="nav-item d-flex align-items-center">
                                     <i class="bx bx-search fs-4 lh-0"></i>
-                                    <input type="text" name="q" id="search-drug"
+                                    <input autocomplete="off" type="text" name="q" id="search-drug"
                                         class="form-control border-0 shadow-none" placeholder="Search..."
                                         aria-label="Search..." />
                                     <button class="btn btn-outline-primary px-1 ms-1" title="Search drug"
@@ -251,15 +251,17 @@
         <div class="layout-overlay layout-menu-toggle"></div>
         @include('layout.modals.new_invoice')
     </div>
+    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/js/config.js') }}"></script>
-    <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script>
+    {{-- <script src="{{ url('assets/vendor/libs/jquery/jquery.js') }}"></script> --}}
     <script src="{{ url('assets/vendor/libs/popper/popper.js') }}"></script>
     <script src="{{ url('assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
     <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
-    <script type="text/javascript">
+    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <script>
         $(document).ready(
             function() {
                 $("#search-drug").autocomplete({
@@ -273,3 +275,4 @@
 </body>
 
 </html>
+

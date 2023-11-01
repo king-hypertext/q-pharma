@@ -44,7 +44,7 @@ $(document).ready(function () {
         var newInvoiceRow =
             `<tr class="" id="form_row_${row}">
             <td class="col-md-4">
-                <div class="form-group ui-widget">
+                <div class="form-group">
                     <input type="text" name="medicine[]" id="medicine_${row}" class="form-control medicine" onfocus="this.type='search'" />
                 </div>
             </td>
@@ -74,10 +74,10 @@ $(document).ready(function () {
         if (row <= 6) {
             $('tbody#td-parent').append(newInvoiceRow)
             $(function () {
-                $('.medicine').autocomplete({
+                $('input.medicine').autocomplete({
                     source: $drug_lists,
                     minLength: 1,
-                    delay: 0,
+                    // delay: 0,
                 });
                 drug_input_2 = $('tr#form_row_1 > td > div > input')[0];
                 input_row_price_2 = $('tr#form_row_1 > td > div > input')[1];
@@ -91,7 +91,7 @@ $(document).ready(function () {
                         elem = elem.target.value;
                         $.ajax({
                             method: 'GET',
-                            url: '/drug-price',
+                            url: "drug-price",
                             data: elem,
                             success: function (price) {
                                 input_row_price_2.value = price;
@@ -110,7 +110,7 @@ $(document).ready(function () {
                         elem = elem.target.value;
                         $.ajax({
                             method: 'GET',
-                            url: '/drug-price',
+                            url: "drug-price",
                             data: elem,
                             success: function (price) {
                                 input_row_price_3.value = price;
@@ -129,7 +129,7 @@ $(document).ready(function () {
                     elem = elem.target.value;
                     $.ajax({
                         method: 'GET',
-                        url: '/drug-price',
+                        url: "drug-price",
                         data: elem,
                         success: function (price) {
                             input_row_price_4.value = price;
@@ -147,7 +147,7 @@ $(document).ready(function () {
                     elem = elem.target.value;
                     $.ajax({
                         method: 'GET',
-                        url: '/drug-price',
+                        url: "drug-price",
                         data: elem,
                         success: function (price) {
                             input_row_price_5.value = price;
@@ -167,7 +167,7 @@ $(document).ready(function () {
                         elem = elem.target.value;
                         $.ajax({
                             method: 'GET',
-                            url: '/drug-price',
+                            url: "drug-price",
                             data: elem,
                             success: function (price) {
                                 input_row_price_6.value = price;
@@ -186,7 +186,7 @@ $(document).ready(function () {
                     elem = elem.target.value;
                     $.ajax({
                         method: 'GET',
-                        url: '/drug-price',
+                        url: "drug-price",
                         data: elem,
                         success: function (price) {
                             input_row_price_7.value = price;
@@ -219,7 +219,7 @@ $(document).ready(function () {
             elem = elem.target.value;
             $.ajax({
                 method: 'GET',
-                url: '/drug-price',
+                url: "drug-price",
                 data: elem,
                 success: function (price) {
                     input_row_price_1.value = price;

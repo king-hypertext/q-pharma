@@ -6,15 +6,15 @@
                     <h5 class="h3 modal-title text-capitalize" id="modalScrollableTitle">new invoice</h5>
                 </div>
             </div>
-            <form id="form-invoice" action="{{ route('invoice.add') }}" method="post">
+            <form autocomplete="off" id="form-invoice" action="{{ route('invoice.add') }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="d-flex flex-row">
                         <div class="col-md-3">
                             <div class="form-group mx-2">
                                 <label for="buyer" class="fw-semibold text-dark mb-1">Buyer Name:</label>
-                                <input type="text" name="customerName" class="form-control rounded-0"
-                                    id="buyer" placeholder="Buyer/Customer Name" aria-describedby="buyerHelp">
+                                <input type="text" name="customerName" class="form-control rounded-0" id="buyer"
+                                    placeholder="Buyer/Customer Name" aria-describedby="buyerHelp">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -64,15 +64,15 @@
                                                 onfocus="this.type='search'" />
                                             <script type="text/javascript">
                                                 var drug_list = [];
-                                                $.ajax({
-                                                    method: "GET",
-                                                    url: "/drugs",
-                                                    dataType: "json",
-                                                    success: function(res) {
-                                                        drug_list = res;
-                                                    }
-                                                })
                                                 $(function() {
+                                                    $.ajax({
+                                                        method: "GET",
+                                                        url: "/drugs",
+                                                        dataType: "json",
+                                                        success: function(res) {
+                                                            drug_list = res;
+                                                        }
+                                                    })
                                                     $('input#medicine').autocomplete({
                                                         source: drug_list,
                                                         minLength: 1,
@@ -85,8 +85,8 @@
                                     <td class="col-md-3">
                                         <div class="form-group">
                                             <input readonly type="text" name="price[]" type="text"
-                                                onfocus="this.type='number'" value="0" id="price" class="form-control"
-                                                value="0" />
+                                                onfocus="this.type='number'" value="0" id="price"
+                                                class="form-control" value="0" />
                                         </div>
                                     </td>
                                     <td class="col-md-2">
@@ -145,11 +145,11 @@
         </div>
     </div>
 </div>
-@section('js')
-    <script type="text/javascript" src="{{ url('assets/js/misc/invoice.js') }}"></script>
-    @if (session('invoice'))
+@if (session('invoice'))
+    @section('js')
         <script type="text/javascript">
-            const showSuccessAlert = Swal.mixin({
+            alert('{{ session('invoice') }}');
+            /* const showSuccessAlert = Swal.mixin({
                 position: 'top-end',
                 toast: true,
                 timer: 5500,
@@ -161,10 +161,13 @@
                 text: '{{ session('invoice') }}',
                 padding: '10px',
                 width: 'auto'
-            });
+            }); */
             if (window.confirm("Click Okay to print receipt")) {
-                
+                window.location.href = '{{ route('invoice.print') }}?1'
             }
         </script>
-    @endif
+    @endsection
+@endif
+@section('js')
+    <script type="text/javascript" src="{{ url('assets/js/misc/invoice.js') }}"></script>
 @endsection
