@@ -10,15 +10,15 @@
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.theme.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/sweetalert/sweetalert2.min.css') }}" />
     <script src="{{ url('assets/vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
-    <script src="{{ url('assets/jQuery.js') }}"></script>
-    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/jQuery.js') }}"></script>
+
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
 
@@ -162,7 +162,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <style>
+                            <style type="text/css">
                                 .ui-autocomplete {
                                     overflow-y: auto;
                                     overflow-x: hidden;
@@ -172,6 +172,9 @@
                                     height: 120px !important;
                                     min-height: 200px;
                                     min-width: 200px;
+                                }
+                                .form-control{
+                                    padding-left: 3px !important;
                                 }
                             </style>
                         </form>
@@ -252,24 +255,14 @@
         <div class="layout-overlay layout-menu-toggle"></div>
         @include('layout.modals.new_invoice')
     </div>
-    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ url('assets/js/config.js') }}"></script>
-    <script src="{{ url('assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
-    <script src="{{ url('assets/js/main.js') }}"></script>
-    <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
-    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
-
-    <script>
-        $(document).ready(
-            function() {
-                $("#search-drug").autocomplete({
-                    source: ['king', 'joe', 'mary', 'java', 'javascript', 'node', 'jnr', 'james', 'jemy'],
-                    minLength: 1,
-                });
-            }
-        )
-    </script>
+    <script type="text/javascript" src="{{ url('assets/vendor/js/helpers.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/js/config.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/vendor/js/menu.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('assets/vendor/select2/select2.full.min.js') }}"></script>
     @yield('js')
 </body>
 

@@ -6,7 +6,7 @@
                     <h5 class="h3 modal-title text-capitalize" id="modalScrollableTitle">new invoice</h5>
                 </div>
             </div>
-            <form {{-- autocomplete="off" --}} id="form-invoice" action="{{ route('invoice.add') }}" method="post">
+            <form id="form-invoice" action="{{ route('invoice.add') }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="d-flex flex-row">
@@ -21,7 +21,7 @@
                             <div class="form-group mx-2">
                                 <label for="buyer" class="fw-semibold text-dark mb-1">Buyer Contact Number:</label>
                                 <input type="text" name="customerPhone" onfocus="this.type='number'"
-                                    class="form-control rounded-0" id="buyer" placeholder="Buyer/Customer Name"
+                                    class="form-control rounded-0" id="customerPhone" placeholder="Buyer/Customer Name"
                                     aria-describedby="buyerHelp">
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 <label for="buyer" class="fw-semibold text-dark mb-1">Date:</label>
                                 <input required name="invoiceDate" type="date"
                                     value="@php echo Date('Y-m-d') @endphp" min="@php echo Date('Y-m-d') @endphp"
-                                    class="form-control rounded-0" id="buyer" placeholder="Buyer/Customer Name"
+                                    class="form-control rounded-0" id="invoiceDate" placeholder="Buyer/Customer Name"
                                     aria-describedby="buyerHelp">
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="form-group mx-2">
                                 <label for="buyer" class="fw-semibold text-dark mb-1">Payment Type:</label>
                                 <select required name="paymentType" type="select" class="form-select rounded-0"
-                                    id="buyer">
+                                    id="paymentType">
                                     <option value="cash" selected readonly>Cash</option>
                                     <option value="momo">Momo</option>
                                 </select>
@@ -60,27 +60,11 @@
                                 <tr class="form_row">
                                     <td class="col-md-4">
                                         <div class="form-group ui-widget">
-                                            <input type="text" name="medicine[]" id="medicine" class="form-control"
-                                                onfocus="this.type='search'" />
-                                            <script type="text/javascript">
-                                                var drug_list;
-                                                $(function() {
-                                                    $.ajax({
-                                                        method: "GET",
-                                                        url: "{{ route('drugs.list') }}",
-                                                        success: function(res) {
-                                                            drug_list = res;
-                                                        }
-                                                    })
-                                                    $('#medicine').on('keyup', function(){
-                                                        console.log(drug_list);
-                                                    })
-                                                    $('#medicine').autocomplete({
-                                                        source: drug_list,
-                                                        minLength: 2,
-                                                    })
-                                                });
-                                            </script>
+                                            {{-- <select required name="medicine[]" id="medicine" class="form-select">
+                                                <option value="" selected disabled>Select drug</option>
+                                            </select> --}}
+                                            <input type="text" name="medicine[]" id="medicine"
+                                                class="form-control medicine" onfocus="this.type='search'" />
                                         </div>
                                     </td>
                                     <td class="col-md-3">
@@ -164,11 +148,17 @@
                 width: 'auto'
             }); */
             if (window.confirm("Click Okay to print receipt")) {
-                window.location.href = '{{ route('invoice.print') }}?1'
+                window.location.href = '/print-invoice?'
             }
         </script>
     @endsection
 @endif
 @section('js')
+    <script> /* 
+        $('.medicine').autocomplete({
+            source: "/drugs",
+            minLength: 2,
+        }); */ 
+    </script>
     <script type="text/javascript" src="{{ url('assets/js/misc/invoice.js') }}"></script>
 @endsection

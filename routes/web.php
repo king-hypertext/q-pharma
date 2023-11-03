@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 
 Route::controller(AppController::class)->group(function () {
@@ -14,7 +15,7 @@ Route::get('/', function () {
     return view('layout.layout');
 });
 Route::get('/drugs', function (Request $req) {
-    return $req ? [
+    return[
         "paracetamol", "citro c", "amoxacilin"
-    ] : "";
+    ];
 })->name('drugs.list');
