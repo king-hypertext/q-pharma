@@ -14,8 +14,9 @@ Route::controller(AppController::class)->group(function () {
 Route::get('/', function () {
     return view('layout.layout');
 });
-Route::get('/drugs', function (Request $req) {
-    return[
+Route::get('/drugs', function () {
+    $arr = [
         "paracetamol", "citro c", "amoxacilin"
     ];
+    return response()->json($arr);
 })->name('drugs.list');

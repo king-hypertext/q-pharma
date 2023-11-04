@@ -43,8 +43,10 @@ $(document).ready(function () {
     window.addNewRow = function () {
         var newInvoiceRow = `<tr class="" id="form_row_${row}">
             <td class="col-md-4">
-                <div class="form-group ui-widget">
-                    <input type="text" name="medicine[]" id="medicine_${row}" class="form-control medicine" onfocus="this.type='search'" />
+                <div class="form-group">
+                    <select required name="medicine[]" id="medicine_${row}" class="form-select medicine">
+                        <option value="" selected disabled>-- Select drug --</option>
+                    </select>
                 </div>
             </td>
             <td class="col-md-3">
@@ -73,9 +75,10 @@ $(document).ready(function () {
         if (row <= 6) {
             $("tbody#td-parent").append(newInvoiceRow);
             $(function () {
-                $(".medicine").autocomplete({
-                    source: JSON.stringify(data),
-                    minLength: 1,
+                $(".medicine").select2({
+                    placeholder: "-- Search for drug --",
+                    minimumInputLength: 1,
+                    data: ['para', 'citro c', 'apc'],
                 });
                 drug_input_2 = $("tr#form_row_1 > td > div > input")[0];
                 input_row_price_2 = $("tr#form_row_1 > td > div > input")[1];

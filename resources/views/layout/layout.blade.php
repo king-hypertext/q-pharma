@@ -10,14 +10,13 @@
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
-    <link rel="stylesheet" href="{{ url('assets/vendor/sweetalert/sweetalert2.min.css') }}" />
     <script src="{{ url('assets/vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('assets/jQuery.js') }}"></script>
+    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2.min.css') }}" />
 
     <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
 </head>
@@ -173,7 +172,8 @@
                                     min-height: 200px;
                                     min-width: 200px;
                                 }
-                                .form-control{
+
+                                .form-control {
                                     padding-left: 3px !important;
                                 }
                             </style>
@@ -255,15 +255,44 @@
         <div class="layout-overlay layout-menu-toggle"></div>
         @include('layout.modals.new_invoice')
     </div>
-    <script type="text/javascript" src="{{ url('assets/vendor/js/helpers.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/js/config.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/vendor/js/menu.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/vendor/select2/select2.full.min.js') }}"></script>
+    <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
+    <script src="{{ url('assets/js/config.js') }}"></script>
+    <script src="{{ url('assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
+    <script src="{{ url('assets/js/main.js') }}"></script>
+    <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
+    <script src="{{ url('assets/vendor/select2/select2.min.js') }}"></script>
+    {{-- <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script> --}}
+    <script src="{{ url('assets/js/misc/invoice.js') }}"></script>
     @yield('js')
+    <script>
+        $(document).ready(function() {
+            var data;
+            $.ajax({
+                method: "GET",
+                url: "/drugs",
+                success: function(res) {
+                    data = res;
+                },
+            });
+            // $("#search-drug").autocomplete({
+            //     minimumLength: 1,
+            //     source: data,
+            // });
+            
+            // $("#SelectDrug").select2({
+            //     placeholder: "-- Search for drug --",
+            //     minimumInputLength: 1,
+            //     data: obj,
+            // });
+
+            $(".medicine").select2({
+                placeholder: "-- Search for drug --",
+                minimumInputLength: 1,
+                data: data,
+            });
+        })
+    </script>
 </body>
 
 </html>

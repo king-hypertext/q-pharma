@@ -59,14 +59,15 @@
                             <tbody id="td-parent">
                                 <tr class="form_row">
                                     <td class="col-md-4">
-                                        <div class="form-group ui-widget">
-                                            {{-- <select required name="medicine[]" id="medicine" class="form-select">
-                                                <option value="" selected disabled>Select drug</option>
-                                            </select> --}}
-                                            <input type="text" name="medicine[]" id="medicine"
-                                                class="form-control medicine" onfocus="this.type='search'" />
+                                        <div class="form-group">
+                                            <select required name="medicine[]" id="SelectDrug" class="form-select">
+                                                <option value="" selected disabled>-- Select drug --</option>
+                                            </select>
+                                            {{-- <input type="text" name="medicine[]" id="medicine"
+                                                class="form-control medicine" onfocus="this.type='search'" /> --}}
                                         </div>
                                     </td>
+
                                     <td class="col-md-3">
                                         <div class="form-group">
                                             <input readonly type="text" name="price[]" type="text"
@@ -153,12 +154,3 @@
         </script>
     @endsection
 @endif
-@section('js')
-    <script> /* 
-        $('.medicine').autocomplete({
-            source: "/drugs",
-            minLength: 2,
-        }); */ 
-    </script>
-    <script type="text/javascript" src="{{ url('assets/js/misc/invoice.js') }}"></script>
-@endsection
