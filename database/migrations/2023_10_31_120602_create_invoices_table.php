@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('quantity');
             $table->string('total');
+            $table->string('InvoiceToken');
             $table->datetimes();
         });
     }

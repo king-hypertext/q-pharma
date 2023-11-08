@@ -20,5 +20,6 @@ class Invoice extends Model
         'price',
         'quantity',
         'total',
+        'InvoiceToken'
     ];
 }

@@ -10,15 +10,18 @@
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="stylesheet" href="{{ url('assets/vendor/fonts/boxicons.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ url('assets/vendor/jquery-ui/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2-bootstrap-5-theme.css') }}" />
+    <link rel="stylesheet" href="{{ asset('libs/datatables-jquery/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/core.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ url('assets/css/demo.css') }}" />
     <script src="{{ url('assets/vendor/sweetalert/sweetalert2.all.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('assets/jQuery.js') }}"></script>
-    <link rel="stylesheet" href="{{ url('assets/vendor/select2/select2.min.css') }}" />
+    <script src="{{ url('/assets/jquery-3.4.1.js') }}"></script>
+    <script src="{{ url('assets/vendor/select2/select2.min.js') }}"></script>
 
-    <title>Q-Pharma | PHARMACY MANAGEMENT SYSTEM</title>
+    <title>Q-Pharma | {{ $title?? 'PHARMACY MANAGEMENT SYSTEM' }} </title>
 </head>
 
 <body>
@@ -47,13 +50,13 @@
                         <span class="menu-header-text">Invoices</span>
                     </li>
                     <li class="menu-item">
-                        <a href="#new-invoice" data-bs-toggle="modal" class="menu-link">
+                        <a href="{{ route('invoice') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">New Invoice</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ route('manage.invoice') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Manage Invoices</div>
                         </a>
@@ -253,7 +256,6 @@
         </div>
         <div class="content-backdrop fade"></div>
         <div class="layout-overlay layout-menu-toggle"></div>
-        @include('layout.modals.new_invoice')
     </div>
     <script src="{{ url('assets/vendor/js/helpers.js') }}"></script>
     <script src="{{ url('assets/js/config.js') }}"></script>
@@ -261,37 +263,27 @@
     <script src="{{ url('assets/vendor/js/menu.js') }}"></script>
     <script src="{{ url('assets/js/main.js') }}"></script>
     <script src="{{ url('assets/vendor/js/git-buttons.js') }}"></script>
-    <script src="{{ url('assets/vendor/select2/select2.min.js') }}"></script>
-    {{-- <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script> --}}
+    <script src="{{ url('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('libs/datatables-jquery/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('libs/datatables-jquery/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ url('assets/js/misc/invoice.js') }}"></script>
     @yield('js')
     <script>
         $(document).ready(function() {
-            var data;
+            var drugs;
             $.ajax({
                 method: "GET",
                 url: "/drugs",
                 success: function(res) {
-                    data = res;
-                },
+                    drugs = res;
+                }
             });
-            // $("#search-drug").autocomplete({
-            //     minimumLength: 1,
-            //     source: data,
-            // });
-            
-            // $("#SelectDrug").select2({
-            //     placeholder: "-- Search for drug --",
-            //     minimumInputLength: 1,
-            //     data: obj,
-            // });
-
-            $(".medicine").select2({
-                placeholder: "-- Search for drug --",
-                minimumInputLength: 1,
-                data: data,
-            });
-        })
+            $('#search-drug').autocomplete({
+                data: drugs,
+                minimumLength: 2,
+                delay: 0
+            })
+        });
     </script>
 </body>
 

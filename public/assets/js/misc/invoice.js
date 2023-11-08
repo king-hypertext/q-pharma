@@ -2,35 +2,50 @@ $(document).ready(function () {
     var row = 1;
     var paid_amt = $("#paid_amt")[0],
         change_amt = $("#change_amt")[0],
-        drug_input_1,
-        input_row_price_1,
-        input_row_qty_1,
-        input_row_total_1,
-        drug_input_2,
-        input_row_price_2,
-        input_row_qty_2,
-        input_row_total_2,
-        drug_input_3,
-        input_row_price_3,
-        input_row_qty_3,
-        input_row_total_3,
-        drug_input_4,
-        input_row_price_4,
-        input_row_qty_4,
-        input_row_total_4,
-        drug_input_5,
-        input_row_price_5,
-        input_row_qty_5,
-        input_row_total_5,
-        drug_input_6,
-        input_row_price_6,
-        input_row_qty_6,
-        input_row_total_6,
-        drug_input_7,
-        input_row_price_7,
-        input_row_qty_7,
-        input_row_total_7;
-
+        di1,
+        ip1,
+        iq1,
+        it1,
+        di2,
+        ip2,
+        iq2,
+        it2,
+        di3,
+        ip3,
+        iq3,
+        it3,
+        di4,
+        ip4,
+        iq4,
+        it4,
+        di5,
+        ip5,
+        iq5,
+        it5,
+        di6,
+        ip6,
+        iq6,
+        it6,
+        di7,
+        ip7,
+        iq7,
+        it7,
+        di8,
+        ip8,
+        iq8,
+        it8,
+        di9,
+        ip9,
+        iq9,
+        it9,
+        di10,
+        ip10,
+        iq10,
+        it10,
+        di11,
+        ip11,
+        iq11,
+        it11;
     var data;
     $.ajax({
         method: "GET",
@@ -45,7 +60,7 @@ $(document).ready(function () {
             <td class="col-md-4">
                 <div class="form-group">
                     <select required name="medicine[]" id="medicine_${row}" class="form-select medicine">
-                        <option value="" selected disabled>-- Select drug --</option>
+                        <option value="" selected disabled> Select drug </option>
                     </select>
                 </div>
             </td>
@@ -72,163 +87,240 @@ $(document).ready(function () {
                 </td>
             </td>
         </tr>`;
-        if (row <= 6) {
+        if (row <= 9) {
             $("tbody#td-parent").append(newInvoiceRow);
             $(function () {
                 $(".medicine").select2({
-                    placeholder: "-- Search for drug --",
-                    minimumInputLength: 1,
-                    data: ['para', 'citro c', 'apc'],
+                    theme: "bootstrap-5",
+                    data: data,
                 });
-                drug_input_2 = $("tr#form_row_1 > td > div > input")[0];
-                input_row_price_2 = $("tr#form_row_1 > td > div > input")[1];
-                input_row_qty_2 = $("tr#form_row_1 > td > div > input")[2];
-                input_row_total_2 = $("tr#form_row_1 > td > div > input")[3];
-                input_row_qty_2 &&
-                    (input_row_qty_2.onkeyup = function (elem) {
-                        input_row_total_2.value =
+                di2 = $(".medicine")[0];
+                ip2 = $("tr#form_row_1 > td > div > input")[0];
+                iq2 = $("tr#form_row_1 > td > div > input")[1];
+                it2 = $("tr#form_row_1 > td > div > input")[2];
+                iq2 &&
+                    (iq2.onkeyup = function (elem) {
+                        it2.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_2.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip2.value).toFixed(2);
                     });
-                drug_input_2 &&
-                    (drug_input_2.onchange = function (elem) {
+                di2 &&
+                    (di2.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_2.value = price;
+                                ip2.value = price;
                             },
                         });
                     });
-                drug_input_3 = $("tr#form_row_2 > td > div > input")[0];
-                input_row_price_3 = $("tr#form_row_2 > td > div > input")[1];
-                input_row_qty_3 = $("tr#form_row_2 > td > div > input")[2];
-                input_row_total_3 = $("tr#form_row_2 > td > div > input")[3];
-                input_row_qty_3 &&
-                    (input_row_qty_3.onkeyup = function (elem) {
-                        input_row_total_3.value =
+                di3 = $(".medicine")[1];
+                ip3 = $("tr#form_row_2 > td > div > input")[0];
+                iq3 = $("tr#form_row_2 > td > div > input")[1];
+                it3 = $("tr#form_row_2 > td > div > input")[2];
+                iq3 &&
+                    (iq3.onkeyup = function (elem) {
+                        it3.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_3.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip3.value).toFixed(2);
                     });
-                drug_input_3 &&
-                    (drug_input_3.onchange = function (elem) {
+                di3 &&
+                    (di3.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_3.value = price;
+                                ip3.value = price;
                             },
                         });
                     });
-                drug_input_4 = $("tr#form_row_3 > td > div > input")[0];
-                input_row_price_4 = $("tr#form_row_3 > td > div > input")[1];
-                input_row_qty_4 = $("tr#form_row_3 > td > div > input")[2];
-                input_row_total_4 = $("tr#form_row_3 > td > div > input")[3];
-                input_row_qty_4 &&
-                    (input_row_qty_4.onkeyup = function (elem) {
-                        input_row_total_4.value =
+                di4 = $(".medicine")[2];
+                ip4 = $("tr#form_row_3 > td > div > input")[0];
+                iq4 = $("tr#form_row_3 > td > div > input")[1];
+                it4 = $("tr#form_row_3 > td > div > input")[2];
+                iq4 &&
+                    (iq4.onkeyup = function (elem) {
+                        it4.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_4.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip4.value).toFixed(2);
                     });
-                drug_input_4 &&
-                    (drug_input_4.onchange = function (elem) {
+                di4 &&
+                    (di4.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_4.value = price;
+                                ip4.value = price;
                             },
                         });
                     });
-                drug_input_5 = $("tr#form_row_4 > td > div > input")[0];
-                input_row_price_5 = $("tr#form_row_4 > td > div > input")[1];
-                input_row_qty_5 = $("tr#form_row_4 > td > div > input")[2];
-                input_row_total_5 = $("tr#form_row_4 > td > div > input")[3];
-                input_row_qty_5 &&
-                    (input_row_qty_5.onkeyup = function (elem) {
-                        input_row_total_5.value =
+                di5 = $(".medicine")[3];
+                ip5 = $("tr#form_row_4 > td > div > input")[0];
+                iq5 = $("tr#form_row_4 > td > div > input")[1];
+                it5 = $("tr#form_row_4 > td > div > input")[2];
+                iq5 &&
+                    (iq5.onkeyup = function (elem) {
+                        it5.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_5.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip5.value).toFixed(2);
                     });
-                drug_input_5 &&
-                    (drug_input_5.onchange = function (elem) {
+                di5 &&
+                    (di5.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_5.value = price;
+                                ip5.value = price;
                             },
                         });
                     });
-                drug_input_6 = $("tr#form_row_5 > td > div > input")[0];
-                input_row_price_6 = $("tr#form_row_5 > td > div > input")[1];
-                input_row_qty_6 = $("tr#form_row_5 > td > div > input")[2];
-                input_row_total_6 = $("tr#form_row_5 > td > div > input")[3];
-                input_row_qty_6 &&
-                    (input_row_qty_6.onkeyup = function (elem) {
-                        input_row_total_6.value =
+                di6 = $(".medicine")[4];
+                ip6 = $("tr#form_row_5 > td > div > input")[0];
+                iq6 = $("tr#form_row_5 > td > div > input")[1];
+                it6 = $("tr#form_row_5 > td > div > input")[2];
+                iq6 &&
+                    (iq6.onkeyup = function (elem) {
+                        it6.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_6.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip6.value).toFixed(2);
                     });
 
-                drug_input_6 &&
-                    (drug_input_6.onchange = function (elem) {
+                di6 &&
+                    (di6.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_6.value = price;
+                                ip6.value = price;
                             },
                         });
                     });
-                drug_input_7 = $("tr#form_row_6 > td > div > input")[0];
-                input_row_price_7 = $("tr#form_row_6 > td > div > input")[1];
-                input_row_qty_7 = $("tr#form_row_6 > td > div > input")[2];
-                input_row_total_7 = $("tr#form_row_6 > td > div > input")[3];
-                input_row_qty_7 &&
-                    (input_row_qty_7.onkeyup = function (elem) {
-                        input_row_total_7.value =
+                di7 = $(".medicine")[5];
+                ip7 = $("tr#form_row_6 > td > div > input")[0];
+                iq7 = $("tr#form_row_6 > td > div > input")[1];
+                it7 = $("tr#form_row_6 > td > div > input")[2];
+                iq7 &&
+                    (iq7.onkeyup = function (elem) {
+                        it7.value =
                             Number.parseInt(elem.target.value).toFixed(2) *
-                            Number.parseFloat(input_row_price_7.value).toFixed(
-                                2
-                            );
+                            Number.parseFloat(ip7.value).toFixed(2);
                     });
-                drug_input_7 &&
-                    (drug_input_7.onchange = function (elem) {
+                di7 &&
+                    (di7.onchange = function (elem) {
                         elem = elem.target.value;
                         $.ajax({
                             method: "GET",
-                            url: "drug-price",
+                            url: "/drug-price",
                             data: elem,
                             success: function (price) {
-                                input_row_price_7.value = price;
+                                ip7.value = price;
+                            },
+                        });
+                    });
+
+                di8 = $(".medicine")[6];
+                ip8 = $("tr#form_row_7 > td > div > input")[0];
+                iq8 = $("tr#form_row_7 > td > div > input")[1];
+                it8 = $("tr#form_row_7 > td > div > input")[2];
+                iq8 &&
+                    (iq8.onkeyup = function (elem) {
+                        it8.value =
+                            Number.parseInt(elem.target.value).toFixed(2) *
+                            Number.parseFloat(ip8.value).toFixed(2);
+                    });
+                di8 &&
+                    (di8.onchange = function (elem) {
+                        elem = elem.target.value;
+                        $.ajax({
+                            method: "GET",
+                            url: "/drug-price",
+                            data: elem,
+                            success: function (price) {
+                                ip8.value = price;
+                            },
+                        });
+                    });
+                di9 = $(".medicine")[7];
+                ip9 = $("tr#form_row_8 > td > div > input")[0];
+                iq9 = $("tr#form_row_8 > td > div > input")[1];
+                it9 = $("tr#form_row_8 > td > div > input")[2];
+                iq9 &&
+                    (iq9.onkeyup = function (elem) {
+                        it9.value =
+                            Number.parseInt(elem.target.value).toFixed(2) *
+                            Number.parseFloat(ip9.value).toFixed(2);
+                    });
+                di9 &&
+                    (di9.onchange = function (elem) {
+                        elem = elem.target.value;
+                        $.ajax({
+                            method: "GET",
+                            url: "/drug-price",
+                            data: elem,
+                            success: function (price) {
+                                ip9.value = price;
+                            },
+                        });
+                    });
+                di10 = $(".medicine")[8];
+                ip10 = $("tr#form_row_9 > td > div > input")[0];
+                iq10 = $("tr#form_row_9 > td > div > input")[1];
+                it10 = $("tr#form_row_9 > td > div > input")[2];
+                iq10 &&
+                    (iq10.onkeyup = function (elem) {
+                        it10.value =
+                            Number.parseInt(elem.target.value).toFixed(2) *
+                            Number.parseFloat(ip10.value).toFixed(2);
+                    });
+                di10 &&
+                    (di10.onchange = function (elem) {
+                        elem = elem.target.value;
+                        $.ajax({
+                            method: "GET",
+                            url: "/drug-price",
+                            data: elem,
+                            success: function (price) {
+                                ip10.value = price;
+                            },
+                        });
+                    });
+                di11 = $(".medicine")[9];
+                ip11 = $("tr#form_row_10 > td > div > input")[0];
+                iq11 = $("tr#form_row_10 > td > div > input")[1];
+                it11 = $("tr#form_row_10 > td > div > input")[2];
+                iq11 &&
+                    (iq11.onkeyup = function (elem) {
+                        it11.value =
+                            Number.parseInt(elem.target.value).toFixed(2) *
+                            Number.parseFloat(ip11.value).toFixed(2);
+                    });
+                di11 &&
+                    (di11.onchange = function (elem) {
+                        elem = elem.target.value;
+                        $.ajax({
+                            method: "GET",
+                            url: "/drug-price",
+                            data: elem,
+                            success: function (price) {
+                                ip11.value = price;
                             },
                         });
                     });
             });
+
             row++;
         } else {
-            alert("A maximum of 6 fields are allowed to be added");
+            alert("A maximum of 10 fields are allowed to be added");
         }
     };
     $(document).on("click", "#removeRow", function (ev) {
@@ -244,26 +336,28 @@ $(document).ready(function () {
             0
         );
     $(function () {
-        drug_input_1 = $("tr.form_row > td > div > input")[0];
-        input_row_price_1 = $("tr.form_row > td > div > input")[1];
-        input_row_qty_1 = $("tr.form_row > td > div > input")[2];
-        input_row_total_1 = $("tr.form_row > td > div > input")[3];
-        input_row_qty_1.onkeyup = function (elem) {
-            input_row_total_1.value =
-                Number.parseInt(elem.target.value).toFixed(2) *
-                Number.parseFloat(input_row_price_1.value).toFixed(2);
-        };
-        drug_input_1.onchange = function (elem) {
-            elem = elem.target.value;
-            $.ajax({
-                method: "GET",
-                url: "drug-price",
-                data: elem,
-                success: function (price) {
-                    input_row_price_1.value = price;
-                },
+        di1 = $("#medicine")[0];
+        ip1 = $("tr.form_row > td > div > input")[0];
+        iq1 = $("tr.form_row > td > div > input")[1];
+        it1 = $("tr.form_row > td > div > input")[2];
+        iq1 &&
+            (iq1.onkeyup = function (elem) {
+                it1.value =
+                    Number.parseInt(elem.target.value).toFixed(2) *
+                    Number.parseFloat(ip1.value).toFixed(2);
             });
-        };
+        di1 &&
+            (di1.onchange = function (elem) {
+                elem = elem.target.value;
+                $.ajax({
+                    method: "GET",
+                    url: "/drug-price",
+                    data: elem,
+                    success: function (price) {
+                        ip1.value = price;
+                    },
+                });
+            });
         $(document).on("keyup", ".qty", function () {
             var $array = [];
             $array.push($("input.total")[0].value);
@@ -291,9 +385,10 @@ $(document).ready(function () {
             $("#total_amt").val(sumNumbers($array));
         });
     });
-    paid_amt.onkeyup = function (elem) {
-        change_amt.value =
-            Number.parseFloat(elem.target.value).toFixed(2) -
-            Number.parseFloat($("#total_amt")[0].value).toFixed(2);
-    };
+    paid_amt &&
+        (paid_amt.onkeyup = function (elem) {
+            change_amt.value =
+                Number.parseFloat(elem.target.value).toFixed(2) -
+                Number.parseFloat($("#total_amt")[0].value).toFixed(2);
+        });
 });

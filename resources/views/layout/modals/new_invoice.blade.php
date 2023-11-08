@@ -59,13 +59,21 @@
                             <tbody id="td-parent">
                                 <tr class="form_row">
                                     <td class="col-md-4">
-                                        <div class="form-group">
-                                            <select required name="medicine[]" id="SelectDrug" class="form-select">
-                                                <option value="" selected disabled>-- Select drug --</option>
-                                            </select>
-                                            {{-- <input type="text" name="medicine[]" id="medicine"
-                                                class="form-control medicine" onfocus="this.type='search'" /> --}}
-                                        </div>
+                                        <div class="">
+                                            <div class="">
+                                                <div class="form-group">
+                                                    <select required name="medicine[]" id="SelectDrug" class="form-select">
+                                                        <option value="">-- Select drug --</option>
+                                                        <option value="1">drug 1</option>
+                                                        <option value="2">drug 2</option>
+                                                        <option value="3">drug 3</option>
+                                                        <option value="4">drug 4</option>
+                                                    </select>
+                                                    {{-- <input type="text" name="medicine[]" id="SelectDrug"
+                                                        class="form-control medicine" onfocus="this.type='search'" /> --}}
+                                                </div>
+                                            </div>
+                                        </div>                                        
                                     </td>
 
                                     <td class="col-md-3">
@@ -154,3 +162,15 @@
         </script>
     @endsection
 @endif
+@section('js')
+    <script>
+        var data;
+        $.ajax({
+            method: "GET",
+            url: "/drugs",
+            success: function(res) {
+                data = res;
+            },
+        });
+    </script>
+@endsection
