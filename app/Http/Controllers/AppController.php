@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Nette\Utils\Random;
+use Yajra\DataTables\DataTables;
 
 class AppController extends Controller
 {
@@ -19,8 +20,25 @@ class AppController extends Controller
             return 5;
         }
     }
-    public function getAllInvoices(Request $invoice){
-        return DB::table('invoices')->select('*')->get();
+    public function getAllInvoices(Request $request)
+    {
+        if ($request->ajax()) {
+            $datas = Invoice::all();
+            return Datatables::of($datas)->addIndexColumn()->addColumn('Action', function ($row) {
+
+                // Update Button
+                // $updateButton = 
+                return $row->InvoiceToken;
+                "<a class='btn btn-sm btn-primary' href='/print-invoice/'" . $row->InvoiceToken . "'>View</a>";
+
+                // Delete Button
+                // $deleteButton = 
+                "<button class='btn btn-sm btn-danger' data-id='" . $row->id . "'>Delete</button>";
+
+                // return $updateButton . " " . $deleteButton;
+            })->make();;
+        }
+        // return view('pages.manage-invoice');
     }
     public function Invoice()
     {
@@ -73,6 +91,6 @@ class AppController extends Controller
     public function ManageInvoice(Invoice $invoice)
     {
         $data = $invoice->paginate(20);
-        return view('pages.manage-invoice', ['data' => $data, 'title'=> 'MANAGE INVOICE']);
+        return view('pages.manage-invoice', ['data' => $data, 'title' => 'MANAGE INVOICE']);
     }
 }
